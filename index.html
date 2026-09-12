@@ -182,6 +182,7 @@
             border-radius: 12px;
             box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
             aspect-ratio: 1;
+            background: #f0f0f0;
         }
 
         .gallery-item img {
@@ -260,6 +261,7 @@
         .confetti {
             position: fixed;
             pointer-events: none;
+            z-index: 9999;
         }
 
         @media (max-width: 400px) {
@@ -340,27 +342,27 @@
             <div class="gallery-title">📸 Our Memories</div>
             <div class="gallery">
                 <div class="gallery-item">
-                    <img src="WhatsApp Image 2026-09-12 at 9.12.16 PM (1).jpeg" alt="Memory 1">
+                    <img src="WhatsApp Image 2026-09-12 at 9.12.16 PM (1).jpeg" alt="Memory 1" onerror="this.style.display='none'">
                     <div class="gallery-item-label">Family ❤️</div>
                 </div>
                 <div class="gallery-item">
-                    <img src="WhatsApp Image 2026-09-12 at 9.12.16 PM.jpeg" alt="Memory 2">
+                    <img src="WhatsApp Image 2026-09-12 at 9.12.16 PM.jpeg" alt="Memory 2" onerror="this.style.display='none'">
                     <div class="gallery-item-label">Champions 😎</div>
                 </div>
                 <div class="gallery-item">
-                    <img src="WhatsApp Image 2026-09-12 at 9.12.17 PM (1).jpeg" alt="Memory 3">
+                    <img src="WhatsApp Image 2026-09-12 at 9.12.17 PM (1).jpeg" alt="Memory 3" onerror="this.style.display='none'">
                     <div class="gallery-item-label">Fun Times 🎉</div>
                 </div>
                 <div class="gallery-item">
-                    <img src="WhatsApp Image 2026-09-12 at 9.12.17 PM.jpeg" alt="Memory 4">
+                    <img src="WhatsApp Image 2026-09-12 at 9.12.17 PM.jpeg" alt="Memory 4" onerror="this.style.display='none'">
                     <div class="gallery-item-label">Double Power 👑</div>
                 </div>
                 <div class="gallery-item">
-                    <img src="WhatsApp Image 2026-09-12 at 9.12.18 PM (1).jpeg" alt="Memory 5">
+                    <img src="WhatsApp Image 2026-09-12 at 9.12.18 PM (1).jpeg" alt="Memory 5" onerror="this.style.display='none'">
                     <div class="gallery-item-label">Moments 💫</div>
                 </div>
                 <div class="gallery-item">
-                    <img src="WhatsApp Image 2026-09-12 at 9.12.18 PM (2).jpeg" alt="Memory 6">
+                    <img src="WhatsApp Image 2026-09-12 at 9.12.18 PM (2).jpeg" alt="Memory 6" onerror="this.style.display='none'">
                     <div class="gallery-item-label">Together 🎊</div>
                 </div>
             </div>
@@ -423,14 +425,14 @@
             alert('🎉 HAPPY BIRTHDAY BHAI! 🎉\n\nLet\'s celebrate this amazing day! 🎂🎊🎈');
         }
 
-        // Simple Confetti Animation
+        // Confetti Animation
         function createConfetti() {
-            const colors = ['#ff6b6b', '#feca57', '#48dbfb', '#ff9ff3', '#1dd1a1'];
+            const emojis = ['🎉', '🎊', '🎈', '⭐', '✨', '💫', '🎂', '❤️'];
             
             for (let i = 0; i < 50; i++) {
                 const confetti = document.createElement('div');
                 confetti.className = 'confetti';
-                confetti.textContent = ['🎉', '🎊', '🎈', '⭐', '✨'][Math.floor(Math.random() * 5)];
+                confetti.textContent = emojis[Math.floor(Math.random() * emojis.length)];
                 confetti.style.left = Math.random() * 100 + '%';
                 confetti.style.top = '-20px';
                 confetti.style.fontSize = Math.random() * 20 + 20 + 'px';
@@ -457,7 +459,7 @@
         document.head.appendChild(style);
 
         // Initialize
-        window.addEventListener('DOMContentLoaded', startCountdown);
+        window.addEventListener('load', startCountdown);
     </script>
 
 </body>
