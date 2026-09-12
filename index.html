@@ -5,403 +5,362 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Happy Birthday Bhai</title>
     <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        html, body {
-            width: 100%;
-            height: 100%;
-        }
-
+        * { margin: 0; padding: 0; box-sizing: border-box; }
         body {
-            font-family: 'Arial', sans-serif;
-            background: linear-gradient(135deg, #ff6b6b, #feca57, #48dbfb);
+            font-family: Arial, sans-serif;
+            background: linear-gradient(45deg, #ff6b6b, #feca57, #48dbfb);
+            min-height: 100vh;
             display: flex;
             justify-content: center;
             align-items: center;
-            min-height: 100vh;
-            padding: 10px;
+            padding: 15px;
         }
-
-        .container {
-            width: 100%;
-            max-width: 480px;
+        .wrapper {
             background: white;
-            border-radius: 20px;
-            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+            border-radius: 25px;
+            box-shadow: 0 30px 80px rgba(0,0,0,0.4);
+            width: 100%;
+            max-width: 500px;
             overflow: hidden;
         }
-
-        .header {
+        .top {
             background: linear-gradient(135deg, #ff6b6b, #feca57);
-            padding: 40px 20px;
+            padding: 50px 20px;
             text-align: center;
             color: white;
         }
-
-        h1 {
-            font-size: 2.5rem;
+        .top h1 {
+            font-size: 2.8rem;
             margin-bottom: 10px;
-            animation: bounce 2s infinite;
+            animation: jump 2s infinite;
         }
-
-        @keyframes bounce {
+        @keyframes jump {
             0%, 100% { transform: translateY(0); }
             50% { transform: translateY(-15px); }
         }
-
-        .subtitle {
+        .top p {
             font-size: 1.1rem;
             opacity: 0.95;
         }
-
-        .countdown {
+        .timer {
             display: grid;
-            grid-template-columns: repeat(4, 1fr);
-            gap: 12px;
+            grid-template-columns: 1fr 1fr 1fr 1fr;
+            gap: 10px;
             padding: 20px;
-            background: #f9f9f9;
+            background: #f5f5f5;
         }
-
-        .countdown-item {
+        .time-box {
             background: linear-gradient(135deg, #ff6b6b, #ff5252);
             color: white;
-            padding: 15px 10px;
-            border-radius: 10px;
+            padding: 15px;
+            border-radius: 12px;
             text-align: center;
-            box-shadow: 0 4px 15px rgba(255, 107, 107, 0.3);
+            box-shadow: 0 5px 15px rgba(255, 107, 107, 0.3);
         }
-
-        .countdown-number {
-            font-size: 1.8rem;
+        .time-num {
+            font-size: 2rem;
             font-weight: bold;
-            display: block;
             line-height: 1;
         }
-
-        .countdown-label {
-            font-size: 0.7rem;
-            margin-top: 5px;
+        .time-txt {
+            font-size: 0.75rem;
+            margin-top: 8px;
             text-transform: uppercase;
             opacity: 0.9;
         }
-
-        .content {
+        .middle {
             padding: 30px 20px;
         }
-
         .card {
-            background: linear-gradient(135deg, rgba(255, 107, 107, 0.1), rgba(254, 202, 87, 0.1));
+            background: linear-gradient(135deg, #ffe5e5, #fff5e5);
             border: 2px solid #ff6b6b;
             border-radius: 15px;
             padding: 30px;
             text-align: center;
             cursor: pointer;
-            min-height: 200px;
+            transition: all 0.3s;
+            min-height: 220px;
             display: flex;
             flex-direction: column;
             justify-content: center;
             align-items: center;
-            transition: all 0.3s;
             margin-bottom: 20px;
         }
-
-        .card:active {
-            transform: scale(0.97);
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(255, 107, 107, 0.3);
         }
-
-        .card-icon {
-            font-size: 4rem;
+        .emoji {
+            font-size: 5rem;
             margin-bottom: 15px;
-            animation: float 3s ease-in-out infinite;
+            animation: bounce 3s ease-in-out infinite;
         }
-
-        @keyframes float {
+        @keyframes bounce {
             0%, 100% { transform: translateY(0); }
             50% { transform: translateY(-20px); }
         }
-
         .card h2 {
             color: #ff6b6b;
-            font-size: 1.5rem;
+            font-size: 1.6rem;
             margin-bottom: 10px;
         }
-
         .card p {
             color: #666;
             font-size: 1rem;
         }
-
         .btn {
             background: linear-gradient(135deg, #ff6b6b, #ff5252);
             color: white;
             border: none;
-            padding: 12px 30px;
+            padding: 14px 28px;
             font-size: 1rem;
             border-radius: 25px;
             cursor: pointer;
             font-weight: bold;
-            box-shadow: 0 5px 15px rgba(255, 107, 107, 0.4);
+            box-shadow: 0 5px 20px rgba(255, 107, 107, 0.4);
+            width: 100%;
             transition: all 0.3s;
             margin-top: 15px;
-            width: 100%;
         }
-
         .btn:active {
-            transform: scale(0.95);
+            transform: scale(0.96);
         }
-
-        .gallery-title {
-            text-align: center;
-            color: #ff6b6b;
-            font-size: 1.3rem;
-            font-weight: bold;
-            margin-bottom: 15px;
-        }
-
-        .gallery {
+        .pics {
             display: grid;
-            grid-template-columns: repeat(2, 1fr);
+            grid-template-columns: 1fr 1fr;
             gap: 12px;
             margin-bottom: 20px;
         }
-
-        .gallery-item {
+        .pic-box {
             position: relative;
             overflow: hidden;
-            border-radius: 10px;
-            background: #e0e0e0;
+            border-radius: 12px;
+            background: #ddd;
             aspect-ratio: 1;
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            box-shadow: 0 4px 12px rgba(0,0,0,0.15);
         }
-
-        .gallery-item img {
+        .pic-box img {
             width: 100%;
             height: 100%;
             object-fit: cover;
         }
-
-        .gallery-item-label {
+        .pic-text {
             position: absolute;
             bottom: 0;
             left: 0;
             right: 0;
-            background: linear-gradient(to top, rgba(0,0,0,0.8), transparent);
+            background: linear-gradient(to top, rgba(0,0,0,0.9), transparent);
             color: white;
-            padding: 12px 8px 8px;
+            padding: 15px 8px 8px;
             font-size: 0.85rem;
             font-weight: bold;
             text-align: center;
         }
-
-        .message {
-            background: #f5f5f5;
+        .msg {
+            background: #f9f9f9;
             border-left: 4px solid #ff6b6b;
             padding: 15px;
             border-radius: 8px;
             margin-bottom: 20px;
             display: none;
         }
-
-        .message.show {
+        .msg.active {
             display: block;
-            animation: slideIn 0.3s ease;
+            animation: slideDown 0.3s ease;
         }
-
-        @keyframes slideIn {
+        @keyframes slideDown {
             from { opacity: 0; transform: translateY(-10px); }
             to { opacity: 1; transform: translateY(0); }
         }
-
-        .message h3 {
+        .msg h3 {
             color: #ff6b6b;
-            margin-bottom: 8px;
             font-size: 1.1rem;
+            margin-bottom: 8px;
         }
-
-        .message p {
+        .msg p {
             color: #555;
             line-height: 1.6;
             font-size: 0.95rem;
         }
-
-        .footer {
+        .bottom {
             background: linear-gradient(135deg, #ff6b6b, #feca57);
             color: white;
             text-align: center;
-            padding: 20px;
+            padding: 25px 20px;
         }
-
-        .footer p {
+        .bottom p {
             margin: 5px 0;
-            font-size: 0.9rem;
+            font-size: 0.95rem;
         }
-
-        .confetti {
+        .confetti-item {
             position: fixed;
-            z-index: 9999;
             pointer-events: none;
+            z-index: 9999;
         }
-
-        @media (max-width: 380px) {
-            h1 { font-size: 2rem; }
-            .countdown-item { padding: 12px 8px; }
-            .countdown-number { font-size: 1.5rem; }
-            .countdown-label { font-size: 0.6rem; }
-            .card-icon { font-size: 3rem; }
-            .gallery { grid-template-columns: 1fr; }
+        @media (max-width: 400px) {
+            .top h1 { font-size: 2rem; }
+            .time-box { padding: 12px; }
+            .time-num { font-size: 1.5rem; }
+            .emoji { font-size: 3.5rem; }
+            .pics { grid-template-columns: 1fr; }
         }
     </style>
 </head>
 <body>
-    <div class="container">
-        <div class="header">
+    <div class="wrapper">
+        <!-- HEADER -->
+        <div class="top">
             <h1>🎉 HAPPY BIRTHDAY BHAI! 👑</h1>
-            <p class="subtitle">Celebrating YOU today! 🎂</p>
+            <p>You're the BEST! Let's Celebrate! 🎂</p>
         </div>
 
-        <div class="countdown">
-            <div class="countdown-item">
-                <span class="countdown-number" id="days">00</span>
-                <span class="countdown-label">Days</span>
+        <!-- COUNTDOWN -->
+        <div class="timer">
+            <div class="time-box">
+                <span class="time-num" id="d">00</span>
+                <div class="time-txt">Days</div>
             </div>
-            <div class="countdown-item">
-                <span class="countdown-number" id="hours">00</span>
-                <span class="countdown-label">Hours</span>
+            <div class="time-box">
+                <span class="time-num" id="h">00</span>
+                <div class="time-txt">Hours</div>
             </div>
-            <div class="countdown-item">
-                <span class="countdown-number" id="minutes">00</span>
-                <span class="countdown-label">Mins</span>
+            <div class="time-box">
+                <span class="time-num" id="m">00</span>
+                <div class="time-txt">Mins</div>
             </div>
-            <div class="countdown-item">
-                <span class="countdown-number" id="seconds">00</span>
-                <span class="countdown-label">Secs</span>
+            <div class="time-box">
+                <span class="time-num" id="s">00</span>
+                <div class="time-txt">Secs</div>
             </div>
         </div>
 
-        <div class="content">
-            <div class="card" onclick="openCard()">
-                <div id="cardFront">
-                    <div class="card-icon">🎂</div>
-                    <h2>Tap to Open</h2>
-                    <p>Your Message Awaits! 💌</p>
+        <!-- MAIN CONTENT -->
+        <div class="middle">
+            <!-- CARD -->
+            <div class="card" onclick="toggleCard()">
+                <div id="front">
+                    <div class="emoji">🎂</div>
+                    <h2>TAP HERE!</h2>
+                    <p>Open your gift! 💌</p>
                 </div>
-                <div id="cardBack" style="display: none;">
+                <div id="back" style="display:none;">
                     <h2>Happy Birthday! ❤️</h2>
-                    <p>You're the BEST BROTHER! Thank you for everything. Let's celebrate! 🎉</p>
-                    <button class="btn" onclick="celebrate(event)">CELEBRATE! 🥳</button>
+                    <p>You're amazing, supportive, and the best brother ever! Love you! 🎉</p>
+                    <button class="btn" onclick="party(event)">PARTY TIME! 🥳</button>
                 </div>
             </div>
 
-            <div class="message" id="message">
-                <h3>Special Message</h3>
-                <p>Wishing you happiness, success & amazing memories! You're AWESOME! ✨💫</p>
+            <!-- MESSAGE -->
+            <div class="msg" id="msg">
+                <h3>💫 Special Message</h3>
+                <p>Wishing you a year full of happiness, success, and wonderful memories! You deserve the best! 🌟</p>
             </div>
 
-            <div class="gallery-title">📸 Our Memories</div>
-            <div class="gallery">
-                <div class="gallery-item">
-                    <img src="https://raw.githubusercontent.com/amansinghgodfather-droid/BHAI-KA-BIRTHDAY/main/WhatsApp%20Image%202026-09-12%20at%209.12.16%20PM%20(1).jpeg" alt="Memory 1">
-                    <div class="gallery-item-label">Family ❤️</div>
+            <!-- PHOTOS -->
+            <div style="margin-bottom: 15px;">
+                <h3 style="text-align: center; color: #ff6b6b; font-size: 1.3rem; margin-bottom: 15px;">📸 Our Memories</h3>
+            </div>
+            <div class="pics">
+                <div class="pic-box">
+                    <img src="https://raw.githubusercontent.com/amansinghgodfather-droid/BHAI-KA-BIRTHDAY/main/WhatsApp%20Image%202026-09-12%20at%209.12.16%20PM%20(1).jpeg" alt="pic1">
+                    <div class="pic-text">Family ❤️</div>
                 </div>
-                <div class="gallery-item">
-                    <img src="https://raw.githubusercontent.com/amansinghgodfather-droid/BHAI-KA-BIRTHDAY/main/WhatsApp%20Image%202026-09-12%20at%209.12.16%20PM.jpeg" alt="Memory 2">
-                    <div class="gallery-item-label">Champions 😎</div>
+                <div class="pic-box">
+                    <img src="https://raw.githubusercontent.com/amansinghgodfather-droid/BHAI-KA-BIRTHDAY/main/WhatsApp%20Image%202026-09-12%20at%209.12.16%20PM.jpeg" alt="pic2">
+                    <div class="pic-text">Champions 😎</div>
                 </div>
-                <div class="gallery-item">
-                    <img src="https://raw.githubusercontent.com/amansinghgodfather-droid/BHAI-KA-BIRTHDAY/main/WhatsApp%20Image%202026-09-12%20at%209.12.17%20PM%20(1).jpeg" alt="Memory 3">
-                    <div class="gallery-item-label">Fun 🎉</div>
+                <div class="pic-box">
+                    <img src="https://raw.githubusercontent.com/amansinghgodfather-droid/BHAI-KA-BIRTHDAY/main/WhatsApp%20Image%202026-09-12%20at%209.12.17%20PM%20(1).jpeg" alt="pic3">
+                    <div class="pic-text">Fun 🎉</div>
                 </div>
-                <div class="gallery-item">
-                    <img src="https://raw.githubusercontent.com/amansinghgodfather-droid/BHAI-KA-BIRTHDAY/main/WhatsApp%20Image%202026-09-12%20at%209.12.17%20PM.jpeg" alt="Memory 4">
-                    <div class="gallery-item-label">Power 👑</div>
+                <div class="pic-box">
+                    <img src="https://raw.githubusercontent.com/amansinghgodfather-droid/BHAI-KA-BIRTHDAY/main/WhatsApp%20Image%202026-09-12%20at%209.12.17%20PM.jpeg" alt="pic4">
+                    <div class="pic-text">Power 👑</div>
                 </div>
-                <div class="gallery-item">
-                    <img src="https://raw.githubusercontent.com/amansinghgodfather-droid/BHAI-KA-BIRTHDAY/main/WhatsApp%20Image%202026-09-12%20at%209.12.18%20PM%20(1).jpeg" alt="Memory 5">
-                    <div class="gallery-item-label">Moments 💫</div>
+                <div class="pic-box">
+                    <img src="https://raw.githubusercontent.com/amansinghgodfather-droid/BHAI-KA-BIRTHDAY/main/WhatsApp%20Image%202026-09-12%20at%209.12.18%20PM%20(1).jpeg" alt="pic5">
+                    <div class="pic-text">Moments 💫</div>
                 </div>
-                <div class="gallery-item">
-                    <img src="https://raw.githubusercontent.com/amansinghgodfather-droid/BHAI-KA-BIRTHDAY/main/WhatsApp%20Image%202026-09-12%20at%209.12.18%20PM%20(2).jpeg" alt="Memory 6">
-                    <div class="gallery-item-label">Together 🎊</div>
+                <div class="pic-box">
+                    <img src="https://raw.githubusercontent.com/amansinghgodfather-droid/BHAI-KA-BIRTHDAY/main/WhatsApp%20Image%202026-09-12%20at%209.12.18%20PM%20(2).jpeg" alt="pic6">
+                    <div class="pic-text">Together 🎊</div>
                 </div>
             </div>
         </div>
 
-        <div class="footer">
-            <p>❤️ Made with love for BHAI!</p>
+        <!-- FOOTER -->
+        <div class="bottom">
+            <p>❤️ MADE WITH LOVE FOR BHAI!</p>
             <p>HAPPY BIRTHDAY! 🎂🎉🎊</p>
         </div>
     </div>
 
     <script>
-        let isOpen = false;
+        let opened = false;
 
-        function startCountdown() {
+        function countdown() {
             const target = new Date('2026-09-13').getTime();
             setInterval(() => {
                 const now = new Date().getTime();
-                const distance = target - now;
-                if (distance > 0) {
-                    const days = Math.floor(distance / (1000*60*60*24));
-                    const hours = Math.floor((distance % (1000*60*60*24)) / (1000*60*60));
-                    const minutes = Math.floor((distance % (1000*60*60)) / (1000*60));
-                    const seconds = Math.floor((distance % (1000*60)) / 1000);
-                    document.getElementById('days').textContent = String(days).padStart(2, '0');
-                    document.getElementById('hours').textContent = String(hours).padStart(2, '0');
-                    document.getElementById('minutes').textContent = String(minutes).padStart(2, '0');
-                    document.getElementById('seconds').textContent = String(seconds).padStart(2, '0');
+                const left = target - now;
+                if (left > 0) {
+                    const days = Math.floor(left / (1000*60*60*24));
+                    const hours = Math.floor((left % (1000*60*60*24)) / (1000*60*60));
+                    const mins = Math.floor((left % (1000*60*60)) / (1000*60));
+                    const secs = Math.floor((left % (1000*60)) / 1000);
+                    document.getElementById('d').textContent = String(days).padStart(2, '0');
+                    document.getElementById('h').textContent = String(hours).padStart(2, '0');
+                    document.getElementById('m').textContent = String(mins).padStart(2, '0');
+                    document.getElementById('s').textContent = String(secs).padStart(2, '0');
                 }
             }, 1000);
         }
 
-        function openCard() {
-            const front = document.getElementById('cardFront');
-            const back = document.getElementById('cardBack');
-            const msg = document.getElementById('message');
-            if (!isOpen) {
-                front.style.display = 'none';
-                back.style.display = 'flex';
-                msg.classList.add('show');
-                isOpen = true;
+        function toggleCard() {
+            const f = document.getElementById('front');
+            const b = document.getElementById('back');
+            const msg = document.getElementById('msg');
+            if (!opened) {
+                f.style.display = 'none';
+                b.style.display = 'flex';
+                msg.classList.add('active');
+                opened = true;
             } else {
-                front.style.display = 'flex';
-                back.style.display = 'none';
-                msg.classList.remove('show');
-                isOpen = false;
+                f.style.display = 'flex';
+                b.style.display = 'none';
+                msg.classList.remove('active');
+                opened = false;
             }
         }
 
-        function celebrate(e) {
+        function party(e) {
             e.stopPropagation();
             makeConfetti();
-            alert('🎉 HAPPY BIRTHDAY BHAI! 🎉\n\nLet\'s Party! 🎂🎊');
+            alert('🎉 HAPPY BIRTHDAY BHAI! 🎉\n\nLet\'s PARTY! 🎂🎊🎈');
         }
 
         function makeConfetti() {
-            const emojis = ['🎉', '🎊', '🎈', '⭐', '✨', '💫', '🎂', '❤️'];
-            for (let i = 0; i < 50; i++) {
+            const items = ['🎉', '🎊', '🎈', '⭐', '✨', '💫', '🎂', '❤️', '🥳', '👑'];
+            for (let i = 0; i < 60; i++) {
                 setTimeout(() => {
-                    const conf = document.createElement('div');
-                    conf.className = 'confetti';
-                    conf.textContent = emojis[Math.floor(Math.random() * emojis.length)];
-                    conf.style.left = Math.random() * 100 + '%';
-                    conf.style.top = '-30px';
-                    conf.style.fontSize = Math.random() * 30 + 20 + 'px';
-                    conf.style.animation = `fall ${Math.random() * 3 + 2}s linear forwards`;
-                    document.body.appendChild(conf);
-                    setTimeout(() => conf.remove(), 3000);
-                }, i * 30);
+                    const c = document.createElement('div');
+                    c.className = 'confetti-item';
+                    c.textContent = items[Math.floor(Math.random() * items.length)];
+                    c.style.left = Math.random() * 100 + '%';
+                    c.style.top = '-50px';
+                    c.style.fontSize = Math.random() * 30 + 25 + 'px';
+                    c.style.animation = `drop ${Math.random() * 2.5 + 2}s linear forwards`;
+                    document.body.appendChild(c);
+                    setTimeout(() => c.remove(), 3000);
+                }, i * 25);
             }
         }
 
         const style = document.createElement('style');
-        style.innerHTML = `@keyframes fall { to { top: 100vh; opacity: 0; transform: rotate(720deg); } }`;
+        style.innerHTML = `@keyframes drop { to { top: 100vh; opacity: 0; transform: rotate(720deg) translateX(80px); } }`;
         document.head.appendChild(style);
 
-        window.addEventListener('load', startCountdown);
+        window.addEventListener('load', countdown);
     </script>
 </body>
 </html>
