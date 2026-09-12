@@ -292,8 +292,8 @@
     <div class="main-container">
         <!-- Header -->
         <div class="header">
-            <h1>🎉 BHAI! 👑</h1>
-            <p>HAPPY BIRTHDAY! 🎂</p>
+            <h1>🎉 HAPPY BIRTHDAY BHAI! 👑</h1>
+            <p>CELEBRATING YOU TODAY! 🎂</p>
         </div>
 
         <!-- Countdown -->
@@ -319,27 +319,27 @@
         <!-- Main Content -->
         <div class="content">
             <!-- Birthday Card -->
-            <div class="card" id="card" onclick="flipCard()">
-                <div id="cardFront">
+            <div class="card" id="card" onclick="toggleCard()">
+                <div id="cardFront" class="card-front-content">
                     <div class="card-icon">🎂</div>
-                    <h2>Tap to Read</h2>
-                    <p>Click here to open your special message! 👇</p>
+                    <h2>TAP TO OPEN</h2>
+                    <p>Your Special Message Awaits! 💌</p>
                 </div>
-                <div id="cardBack" style="display: none;">
-                    <h2>Happy Birthday Bhai! ❤️</h2>
-                    <p>Thank you for always being there for me, supporting me through everything, and being the BEST BROTHER ever! Let's celebrate this amazing day together! 🎉</p>
-                    <button class="btn" onclick="celebrate(event)">🥳 CELEBRATE! 🥳</button>
+                <div id="cardBack" class="card-back-content" style="display: none;">
+                    <h2>Happy Birthday! ❤️</h2>
+                    <p>You are the BEST BROTHER! Thank you for being amazing, supportive, and always there for me. Let's make this day unforgettable! 🎉</p>
+                    <button class="btn" onclick="launchCelebration(event)">CELEBRATE NOW! 🥳</button>
                 </div>
             </div>
 
-            <!-- Message -->
+            <!-- Special Message -->
             <div class="message-box" id="messageBox">
-                <h3>Dear Bhai,</h3>
-                <p>Wishing you a year full of happiness, success, and amazing moments! You deserve all the best in life. Keep shining and being awesome! 💫</p>
+                <h3>A Special Message</h3>
+                <p>Wishing you endless happiness, success, and amazing memories this year! You deserve the best! Keep being awesome! ✨💫</p>
             </div>
 
             <!-- Gallery -->
-            <div class="gallery-title">📸 Our Memories</div>
+            <div class="gallery-title">📸 Our Best Memories</div>
             <div class="gallery">
                 <div class="gallery-item">
                     <img src="WhatsApp Image 2026-09-12 at 9.12.16 PM (1).jpeg" alt="Memory 1" onerror="this.style.display='none'">
@@ -370,96 +370,96 @@
 
         <!-- Footer -->
         <div class="footer">
-            <p>❤️ Made with love for you!</p>
-            <p style="font-size: 0.9rem; opacity: 0.9;">HAPPY BIRTHDAY BHAI! 🎂🎉</p>
+            <p>❤️ Made with love for my BEST BROTHER!</p>
+            <p style="font-size: 0.9rem; opacity: 0.9;">HAPPY BIRTHDAY BHAI! 🎂🎉🎊</p>
         </div>
     </div>
 
     <script>
-        // Countdown Timer
-        function startCountdown() {
-            const targetDate = new Date('2026-09-13').getTime();
+        let cardIsFlipped = false;
+
+        function initCountdown() {
+            const birthdayDate = new Date('2026-09-13').getTime();
             
-            setInterval(() => {
-                const now = new Date().getTime();
-                const distance = targetDate - now;
+            const updateTimer = setInterval(() => {
+                const currentTime = new Date().getTime();
+                const timeRemaining = birthdayDate - currentTime;
 
-                if (distance > 0) {
-                    const days = Math.floor(distance / (1000 * 60 * 60 * 24));
-                    const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-                    const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
-                    const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+                if (timeRemaining > 0) {
+                    const daysLeft = Math.floor(timeRemaining / (1000 * 60 * 60 * 24));
+                    const hoursLeft = Math.floor((timeRemaining % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+                    const minutesLeft = Math.floor((timeRemaining % (1000 * 60 * 60)) / (1000 * 60));
+                    const secondsLeft = Math.floor((timeRemaining % (1000 * 60)) / 1000);
 
-                    document.getElementById('days').textContent = String(days).padStart(2, '0');
-                    document.getElementById('hours').textContent = String(hours).padStart(2, '0');
-                    document.getElementById('minutes').textContent = String(minutes).padStart(2, '0');
-                    document.getElementById('seconds').textContent = String(seconds).padStart(2, '0');
+                    document.getElementById('days').textContent = String(daysLeft).padStart(2, '0');
+                    document.getElementById('hours').textContent = String(hoursLeft).padStart(2, '0');
+                    document.getElementById('minutes').textContent = String(minutesLeft).padStart(2, '0');
+                    document.getElementById('seconds').textContent = String(secondsLeft).padStart(2, '0');
                 }
             }, 1000);
         }
 
-        // Card Flip Function
-        let isFlipped = false;
-        function flipCard() {
-            const cardFront = document.getElementById('cardFront');
-            const cardBack = document.getElementById('cardBack');
+        function toggleCard() {
+            const frontContent = document.getElementById('cardFront');
+            const backContent = document.getElementById('cardBack');
             const messageBox = document.getElementById('messageBox');
 
-            if (!isFlipped) {
-                cardFront.style.display = 'none';
-                cardBack.style.display = 'flex';
+            if (!cardIsFlipped) {
+                frontContent.style.display = 'none';
+                backContent.style.display = 'flex';
                 messageBox.classList.add('show');
-                isFlipped = true;
+                cardIsFlipped = true;
             } else {
-                cardFront.style.display = 'flex';
-                cardBack.style.display = 'none';
+                frontContent.style.display = 'flex';
+                backContent.style.display = 'none';
                 messageBox.classList.remove('show');
-                isFlipped = false;
+                cardIsFlipped = false;
             }
         }
 
-        // Celebrate Function
-        function celebrate(event) {
+        function launchCelebration(event) {
             event.stopPropagation();
-            createConfetti();
-            alert('🎉 HAPPY BIRTHDAY BHAI! 🎉\n\nLet\'s celebrate this amazing day! 🎂🎊🎈');
+            dropConfetti();
+            showCelebrationAlert();
         }
 
-        // Confetti Animation
-        function createConfetti() {
-            const emojis = ['🎉', '🎊', '🎈', '⭐', '✨', '💫', '🎂', '❤️'];
+        function showCelebrationAlert() {
+            alert('🎉 HAPPY BIRTHDAY BHAI! 🎉\n\nLet\'s Party! 🎂🎊🎈\n\nYou are AMAZING! 💯');
+        }
+
+        function dropConfetti() {
+            const celebrationEmojis = ['🎉', '🎊', '🎈', '⭐', '✨', '💫', '🎂', '❤️', '🥳', '👑'];
             
-            for (let i = 0; i < 50; i++) {
-                const confetti = document.createElement('div');
-                confetti.className = 'confetti';
-                confetti.textContent = emojis[Math.floor(Math.random() * emojis.length)];
-                confetti.style.left = Math.random() * 100 + '%';
-                confetti.style.top = '-20px';
-                confetti.style.fontSize = Math.random() * 20 + 20 + 'px';
-                confetti.style.opacity = '1';
-                confetti.style.animation = `fall ${Math.random() * 3 + 2}s linear forwards`;
-                
-                document.body.appendChild(confetti);
-                
-                setTimeout(() => confetti.remove(), 3000);
+            for (let i = 0; i < 60; i++) {
+                setTimeout(() => {
+                    const confettiPiece = document.createElement('div');
+                    confettiPiece.className = 'confetti';
+                    confettiPiece.textContent = celebrationEmojis[Math.floor(Math.random() * celebrationEmojis.length)];
+                    confettiPiece.style.left = Math.random() * 100 + '%';
+                    confettiPiece.style.top = '-30px';
+                    confettiPiece.style.fontSize = Math.random() * 25 + 25 + 'px';
+                    confettiPiece.style.animation = `fallingConfetti ${Math.random() * 2.5 + 2.5}s linear forwards`;
+                    
+                    document.body.appendChild(confettiPiece);
+                    
+                    setTimeout(() => confettiPiece.remove(), 3000);
+                }, i * 30);
             }
         }
 
-        // Add animation style
-        const style = document.createElement('style');
-        style.textContent = `
-            @keyframes fall {
+        const keyframesStyle = document.createElement('style');
+        keyframesStyle.innerHTML = `
+            @keyframes fallingConfetti {
                 to {
                     top: 100vh;
                     opacity: 0;
-                    transform: rotate(360deg);
+                    transform: rotate(720deg) translateX(100px);
                 }
             }
         `;
-        document.head.appendChild(style);
+        document.head.appendChild(keyframesStyle);
 
-        // Initialize
-        window.addEventListener('load', startCountdown);
+        window.addEventListener('load', initCountdown);
     </script>
 
 </body>
