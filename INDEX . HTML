@@ -1,0 +1,325 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Happy Birthday Bhai!</title>
+    <style>
+        :root {
+            --primary-color: #ff6b6b;
+            --secondary-color: #feca57;
+            --background-color: #f7f1e3;
+            --text-color: #2c3e50;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: var(--background-color);
+            color: var(--text-color);
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            overflow-x: hidden;
+            position: relative;
+        }
+
+        /* Floating Bubbles Background System */
+        .bubbles-background {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+            z-index: -1;
+            pointer-events: none;
+        }
+
+        .bubble {
+            position: absolute;
+            bottom: -100px;
+            background-color: rgba(254, 202, 87, 0.25);
+            border-radius: 50%;
+            animation: rise 12s infinite linear;
+        }
+
+        .bubble:nth-child(even) {
+            background-color: rgba(255, 107, 107, 0.2);
+        }
+
+        @keyframes rise {
+            0% {
+                transform: translateY(0) scale(1) rotate(0deg);
+                opacity: 0;
+            }
+            10% {
+                opacity: 0.8;
+            }
+            90% {
+                opacity: 0.4;
+            }
+            100% {
+                transform: translateY(-110vh) scale(1.3) rotate(360deg);
+                opacity: 0;
+            }
+        }
+
+        header {
+            text-align: center;
+            padding: 40px 20px;
+            z-index: 2;
+        }
+
+        h1 {
+            font-size: 3rem;
+            color: var(--primary-color);
+            margin-bottom: 10px;
+            animation: bounce 2s infinite;
+            text-shadow: 1px 1px 3px rgba(0,0,0,0.05);
+        }
+
+        .subtitle {
+            font-size: 1.2rem;
+            color: #7f8c8d;
+        }
+
+        /* Countdown Timer Styles */
+        .countdown-container {
+            background: white;
+            padding: 15px 30px;
+            border-radius: 50px;
+            box-shadow: 0 8px 24px rgba(0,0,0,0.06);
+            margin: 20px auto;
+            display: flex;
+            gap: 20px;
+            font-weight: bold;
+            width: max-content;
+            z-index: 2;
+        }
+
+        .countdown-item {
+            text-align: center;
+        }
+
+        .countdown-number {
+            font-size: 1.5rem;
+            color: var(--primary-color);
+            display: block;
+        }
+
+        .countdown-label {
+            font-size: 0.8rem;
+            color: #95a5a6;
+            text-transform: uppercase;
+        }
+
+        /* Card Section */
+        .card-container {
+            perspective: 1000px;
+            margin: 20px auto;
+            width: 350px;
+            height: 450px;
+            z-index: 2;
+        }
+
+        .birthday-card {
+            width: 100%;
+            height: 100%;
+            transform-style: preserve-3d;
+            transition: transform 0.8s ease;
+            cursor: pointer;
+            box-shadow: 0 12px 35px rgba(0,0,0,0.12);
+            border-radius: 15px;
+        }
+
+        .birthday-card.flipped {
+            transform: rotateY(180deg);
+        }
+
+        .card-front, .card-back {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            backface-visibility: hidden;
+            border-radius: 15px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            padding: 30px;
+            box-sizing: border-box;
+        }
+
+        .card-front {
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            color: white;
+            text-align: center;
+        }
+
+        .card-front .cake-icon {
+            font-size: 5rem;
+            margin-bottom: 20px;
+        }
+
+        .card-back {
+            background: white;
+            transform: rotateY(180deg);
+            text-align: center;
+            border: 3px solid var(--primary-color);
+        }
+
+        /* Audio Player Control Window */
+        .audio-controls {
+            margin-top: 15px;
+            background: #f1f2f6;
+            padding: 8px 15px;
+            border-radius: 20px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 0.9rem;
+        }
+
+        /* Gallery Section */
+        .gallery {
+            max-width: 1200px;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 25px;
+            padding: 40px 20px;
+            width: 100%;
+            box-sizing: border-box;
+            z-index: 2;
+        }
+
+        .gallery-item {
+            background: white;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.06);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .gallery-item:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 12px 25px rgba(0,0,0,0.12);
+        }
+
+        .gallery-item img {
+            width: 100%;
+            height: 320px;
+            object-fit: cover;
+            display: block;
+        }
+
+        .gallery-item p {
+            padding: 15px;
+            margin: 0;
+            text-align: center;
+            font-weight: bold;
+            background-color: #ffffff;
+            border-top: 1px solid #f1f2f6;
+        }
+
+        .celebrate-btn {
+            background-color: var(--primary-color);
+            color: white;
+            border: none;
+            padding: 15px 32px;
+            font-size: 1.1rem;
+            border-radius: 30px;
+            cursor: pointer;
+            box-shadow: 0 4px 15px rgba(255, 107, 107, 0.4);
+            transition: background 0.3s, transform 0.2s;
+            margin: 15px 0;
+        }
+
+        .celebrate-btn:hover {
+            background-color: #ff5252;
+            transform: scale(1.05);
+        }
+
+        #confetti-canvas {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 999;
+        }
+
+        @keyframes bounce {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-10px); }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Confetti layer -->
+    <canvas id="confetti-canvas"></canvas>
+
+    <!-- Floating Background Bubble Elements -->
+    <div class="bubbles-background" id="bubbles-layer"></div>
+
+    <!-- Background Music Audio Element -->
+    <audio id="bg-music" src="bhai_ka_birthday.mp3" loop></audio>
+
+    <header>
+        <h1>Bhai Ka Birthday! 👑🎉</h1>
+        
+        <!-- Live Countdown Component -->
+        <div class="countdown-container" id="countdown-clock">
+            <div class="countdown-item"><span class="countdown-number" id="days">00</span><span class="countdown-label">Days</span></div>
+            <div class="countdown-item"><span class="countdown-number" id="hours">00</span><span class="countdown-label">Hrs</span></div>
+            <div class="countdown-item"><span class="countdown-number" id="minutes">00</span><span class="countdown-label">Min</span></div>
+            <div class="countdown-item"><span class="countdown-number" id="seconds">00</span><span class="countdown-label">Sec</span></div>
+        </div>
+        
+        <p class="subtitle">Wishing the absolute best Bhai in the world a fantastic year ahead!</p>
+    </header>
+
+    <main>
+        <!-- Interactive Greeting Card -->
+        <div class="card-container">
+            <div class="birthday-card" id="bdayCard" onclick="flipCard()">
+                <div class="card-front">
+                    <div class="cake-icon">🎂</div>
+                    <h2>You have a secret message!</h2>
+                    <p>(Click to open the card)</p>
+                </div>
+                <div class="card-back">
+                    <h2>Happy Birthday Bhai! ❤️</h2>
+                    <p>Thank you for always being by my side, supporting me, and being the best brother anyone could ask for. Let's make this year unforgettable!</p>
+                    
+                    <button class="celebrate-btn" onclick="triggerCelebration(event)">Celebrate! 🥳</button>
+                    
+                    <div class="audio-controls">
+                        <span>🎵 Playing: Bhai Ka Birthday</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Corrected Image Gallery using GitHub matching names -->
+        <h2 style="text-align: center; margin-top: 60px; color: var(--text-color); font-size: 2.2rem;">Our Best Memories 📸</h2>
+        <div class="gallery">
+            <div class="gallery-item">
+                <img src="WhatsApp Image 2026-09-12 at 9.12.16 PM (1).jpeg" alt="Memory 1">
+                <p>Family love and guidance ❤️</p>
+            </div>
+            <div class="gallery-item">
+                <img src="WhatsApp Image 2026-09-12 at 9.12.16 PM.jpeg" alt="Memory 2">
+                <p>Suited up like champions! 😎</p>
+            </div>
+            <div class="gallery-item">
+                <img src="WhatsApp Image 2026-09-12 at 9.12.17 PM (1).jpeg" alt="Memory 3">
+                <p>Fun times and celebrations 🎉</p>
+            </div>
+            <div class="gallery-item">
+                <img src="WhatsApp Image 2026-09-12 at 9.12.17 PM.jpeg" alt="Memory 4">
+                <p>Matching look, double the power! 👑</p>
+            </div>
